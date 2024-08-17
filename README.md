@@ -22,10 +22,13 @@ A modern, responsive bookstore website built using React and Tailwind CSS.
    git clone https://github.com/MisbahAnsar/Bookify.git
 
 2. Navigate the project to the directory:
+   ```bash
    cd Bookify
 
-3. Install dependencies.
-  npm install or npm i
+4. Install dependencies.
+   ```bash
+   npm install or npm i
 
-4. Start the development server.
-  npm run dev
+6. Start the development server.
+   ```bash
+   npm run dev
