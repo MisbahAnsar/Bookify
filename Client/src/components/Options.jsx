@@ -6,7 +6,7 @@ const Options = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await fetch('http://https://bookify-backend-pi.vercel.app/api/bookopt');
+        const response = await fetch('http://bookify-backend-pi.vercel.app/api/bookopt');
         const data = await response.json();
         setBooks(data);
       } catch (error) {
