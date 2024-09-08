@@ -3,7 +3,13 @@ const cors = require('cors');
 const app = express();
 
 
-app.use(cors());
+const corsOptions = {
+    origin: 'https://bookify-bay.vercel.app', // Replace with your frontend URL or '*' for all origins
+    optionsSuccessStatus: 200, // Some legacy browsers choke on 204 status
+  };
+  
+  // Use CORS middleware globally for all routes
+  app.use(cors(corsOptions));
 app.use(express.json());
 
 app.get('/api/books', (req, res) => {

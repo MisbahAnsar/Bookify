@@ -5,11 +5,16 @@ const Review = () => {
   const [selectedReview, setSelectedReview] = useState(0); // Set the first review as open by default
 
   useEffect(() => {
-    // Fetch the reviews data from the server
-    fetch('http://localhost:5000/api/reviews')
-      .then(response => response.json())
-      .then(data => setReviews(data))
-      .catch(error => console.error('Error fetching reviews:', error));
+    const fetchBooks = async () => {
+      try {
+        const response = await axios.get('https://bookify-backend-pi.vercel.app/api/reviews');
+        setBooks(response.data); // Assuming setBooks is your state setter for books
+      } catch (error) {
+        console.error('Error fetching book data:', error);
+      }
+    };
+
+    fetchBooks();
   }, []);
 
   const handleReadClick = (index) => {
