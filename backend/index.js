@@ -14,7 +14,7 @@ app.get('/ping', (req, res)=>{
 
 app.use(bodyParser.json());
 app.use(cors()); // we can add methods in cors() for adding more security (means, u can do something so that it is only available to fetch sonething by only that port), but for now it is open to world
-app.use('./auth', AuthRouter);
+app.use('/auth', AuthRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is running on ${PORT}`)

@@ -17,7 +17,7 @@ const Review = () => {
   };
 
   return (
-    <div className='w-full h-screen review'>
+    <div className='w-full review'>
       <div>
         <h1 className='mx-9 text-3xl text-zinc-900 font-mono font-bold tracking-tighter md:mx-10 lg:mx-32'>Reader&apos;s reviews</h1>
         <hr className='h-[0.2vh] mt-9 rounded-full bg-zinc-400' />
@@ -27,16 +27,14 @@ const Review = () => {
             <div className='flex mx-9 justify-between items-center md:mx-10 lg:mx-32'>
               <h1 className='underline text-xl'>{review.name}</h1>
               <button 
-  className="text-xl text-zinc-500 cursor-pointer relative transition-all duration-500 ease-in-out group"
-  onClick={() => handleReadClick(index)}
->
-  Read
-  <span 
-    className={`absolute left-0 bottom-[-3px] h-[0.2vh] bg-zinc-900 rounded-full transition-all duration-500 ease-in-out
-    group-hover:w-full w-0`}
-  ></span>
-</button>
-
+                className="text-xl text-zinc-500 cursor-pointer relative transition-all duration-500 ease-in-out group"
+                onClick={() => handleReadClick(index)}>
+                Read
+                <span 
+                className={`absolute left-0 bottom-[-3px] h-[0.2vh] bg-zinc-900 rounded-full transition-all duration-500 ease-in-out
+                group-hover:w-full w-0`}>
+                </span>
+              </button>
             </div>
             <div
               className={`overflow-hidden transition-all duration-700 ease-in-out ${selectedReview === index ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}

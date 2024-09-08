@@ -19,7 +19,7 @@ const Options = () => {
 
   return (
     <div className='w-full py-6'>
-      <h1 className='text-3xl mx-12 font-mono font-bold text-center mb-8'>Our Top Categories</h1>
+      <h1 className='text-5xl mx-12 mt-6 font-mono font-bold text-center mb-8'>Our Top Categories</h1>
       <div className='flex flex-col items-center space-y-6'>
         <div className='flex justify-center w-full'>
           {["Fiction", "Fantasy", "Mystery"].map((index, item) => (
@@ -39,7 +39,7 @@ const Options = () => {
       <hr className='h-1 mx-8 mt-12 mb-8 rounded-full bg-zinc-400' />
       <div className='md:mx-16'>
         <div className='flex'>
-        <h1 className='text-3xl font-serif font-bold lg:mx-14'>Selected for you</h1>
+        <h1 className='text-3xl ml-8 font-serif font-bold lg:mx-14'>Selected for you</h1>
         <h1 className='ml-auto mr-6 sm:mr-8 lg:mr-9 p-1 right-2 text-zinc-500'>See All <span className=''>{">"}</span></h1>
         </div>
         <div className='cards m-6 md:grid md:grid-cols-2 lg:grid-cols-4 gap-6'>

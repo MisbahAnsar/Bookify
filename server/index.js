@@ -24,6 +24,7 @@ app.get('/api/bookopt', (req, res) => {
     res.json(createBook)
 })
 
+// this is the route for the bookchoices
 app.get('/api/bookchoices', (req, res) => {
     const books = (id, image, name, author, price) => ({id, image, name, author, price});
     const createBook = [
@@ -35,6 +36,7 @@ app.get('/api/bookchoices', (req, res) => {
     res.json(createBook)
 })
 
+// this is the route for the reviews
 app.get('/api/reviews', (req, res) => {
     const reviews = (name, review, image, imageDescription)=>({name, review, image, imageDescription});
     const createReviews = [
@@ -46,6 +48,6 @@ app.get('/api/reviews', (req, res) => {
     res.json(createReviews);
 });
 
-
-const PORT = process.env.PORT || 8080;
+// this is the route for the cart
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -1,65 +1,38 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 const Landing = () => {
-    const [books, setBooks] = useState([]);
-
-    useEffect(() => {
-        const fetchBooks = async () => {
-            try {
-                // Correct URL with protocol and path to your Express API
-                const response = await fetch('http://localhost:5000/api/books');
-                const data = await response.json();
-
-                // Assuming the API returns an array of books, directly set it to state
-                setBooks(data);
-            } catch (error) {
-                console.error('Error fetching book data:', error);
-            }
-        };
-
-        fetchBooks();
-    }, []);
-
-    const truncateDescription = (text, maxLength) => {
-        if (text.length <= maxLength) {
-            return text;
-        }
-        return text.slice(0, maxLength) + '...';
-    };
-
-    if (books.length === 0) {
-        return <div>Loading...</div>;
-    }
-
-    return (
-        <div className='bg-[#f4f8f9] pt-1'>
-                <h2 className='border-2 border-zinc-400 p-2 w-32 mx-8 md:mx-16 lg:mx-32 my-8 rounded-sm sm:mt-12 md:mt-20 lg:mt-32'>Trending Now</h2>
-            {books.map((book, index) => (
-                <div key={index} className='mx-8 flex flex-col sm:flex-row mb-12 md:mx-16 lg:mx-32'>
-                    <div className='flex-1'>
-                        <a className='font-bold font-serif text-3xl sm:text-4xl lg:text-5xl'>{book.title}</a>
-                        <p className='mt-6 text-zinc-600 font-serif lg:mr-32'>
-                            {truncateDescription(book.description)} {/* Adjust maxLength as needed */}
-                        </p>
-                        <button className='bg-purple-400 rounded-sm my-5 text-xl px-4 py-3 text-zinc-100'>View this book</button>
-                    </div>
-                    <div className='flex-1 sm:ml-6 lg:ml-32 sm:mt-[-1vh] md:mt-[-5vh] lg:mt-[-8vh] mt-6'>
-                        <h1 className='hidden lg:block font-normal text-zinc-600 text-xl'>
-                            AUTOGRAPHED
-                            <br />BOOKS + 30%
-                            <br />
-                            DISCOUNT
-                        </h1>
-                        <img
-                            src={book.image}
-                            alt={`Book cover`}
-                            className='w-48 h-88 pb-10 rounded-md sm:w-52 sm:mt-[-5vh] md:mt-[-2vh] lg:mt-[-10.5vh] lg:mr-24 sm:h-80 md:w-60 md:h-96 lg:w-80 lg:h-[28rem] xl:w-80 xl:h-[30rem] mx-auto cursor-pointer'
-                        />
-                    </div>
-                </div>
-            ))}
+  const [books, setBooks] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  return (
+    <main>
+      <section className=" relative w-full bg-gradient-to-br from-indigo-900 to-pink-500 py-48 md:py-48 lg:py-48 h-screen">
+        <div className="flex flex-col items-center text-center gap-6 px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl font-bold tracking-tighter text-white sm:text-5xl lg:text-6xl">
+            Discover Your Next Great Read
+          </h1>
+          <p className="max-w-xl text-center text-lg text-white/90 md:text-xl">
+            Explore our curated collection of books across a wide range of genres and find your perfect literary
+            companion.
+          </p>
+          <div className="flex gap-2">
+            <input
+              type="search"
+              placeholder="Search books..."
+              className="max-w-md flex-1 rounded-md bg-white/20 px-4 py-2 text-white placeholder:text-white/70 focus:outline-none focus:ring-2 focus:ring-white"
+              defaultValue={searchQuery}
+            />
+            <button className="rounded-md bg-white px-4 py-2 text-sm font-medium text-purple-600 shadow transition-colors hover:bg-white/90 focus:outline-none focus:ring-1 focus:ring-white disabled:pointer-events-none disabled:opacity-50">
+              Search
+            </button>
+          </div>
         </div>
-    );
+        <div className="absolute inset-0 -z-10 opacity-30 mix-blend-overlay">
+          <img src="/placeholder.svg" alt="Hero Background" className="h-full w-full object-cover" />
+        </div>
+      </section>
+    </main>
+  );
 };
 
 export default Landing;
