@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const Options = () => {
   const [books, setBooks] = useState([]);
@@ -6,11 +7,7 @@ const Options = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/bookopt');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
+        const { data } = await axios.get('https://bookify-backend-pi.vercel.app/api/bookopt');
         setBooks(data); // Assuming setBooks is your state setter for books
       } catch (error) {
         console.error('Error fetching book data:', error);
