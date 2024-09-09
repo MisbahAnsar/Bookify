@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Review = () => {
   const [reviews, setReviews] = useState([]);
@@ -7,8 +8,8 @@ const Review = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await axios.get('https://bookify-backend-pi.vercel.app/api/reviews');
-        setBooks(response.data); // Assuming setBooks is your state setter for books
+        const response = await axios.get('http://localhost:5000/api/reviews');
+        setReviews(response.data); // Assuming setBooks is your state setter for books
       } catch (error) {
         console.error('Error fetching book data:', error);
       }

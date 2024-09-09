@@ -6,7 +6,7 @@ const Landing = () => {
   const [searchQuery, setSearchQuery] = useState('');
   return (
     <main>
-      <section className=" relative w-full bg-gradient-to-br from-indigo-900 to-pink-500 py-48 md:py-48 lg:py-48 h-screen">
+      <section className="relative w-full bg-gradient-to-br from-indigo-900 to-pink-500 py-48 md:py-48 lg:py-48 h-full">
         <div className="flex flex-col items-center text-center gap-6 px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl font-bold tracking-tighter text-white sm:text-5xl lg:text-6xl">
             Discover Your Next Great Read
