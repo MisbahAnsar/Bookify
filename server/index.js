@@ -3,9 +3,7 @@ const cors = require('cors');
 const app = express();
 
 // Use CORS middleware
-app.use(cors({
-    origin: 'https://bookify-peach.vercel.app'  // Allow requests from your development domain
-}));
+app.use(cors());
 
 app.use(express.json());
 
@@ -21,7 +19,7 @@ app.get('/api/bookopt', (req, res) => {
 });
 
 // Define the /api/bookchoices route
-app.post('/api/bookchoices', (req, res) => {
+app.get('/api/bookchoices', (req, res) => {
     const books = (id, image, name, author, price) => ({id, image, name, author, price});
     const createBook = [
         books(1, 'https://m.media-amazon.com/images/I/910lg-mg-sL._AC_UL480_FMwebp_QL65_.jpg', 'Trust', 'Hernan Diaz', '$15.8'),
@@ -43,5 +41,5 @@ app.get('/api/reviews', (req, res) => {
     res.json(createReviews);
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
