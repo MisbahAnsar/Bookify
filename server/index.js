@@ -35,7 +35,9 @@ app.get('/api/reviews', (req, res) => {
     const reviews = (name, review, image, imageDescription) => ({ name, review, image, imageDescription });
     const createReviews = [
         reviews('Misbah Ansari', 'This book was truly captivating and insightful. A must-read!', 'https://m.media-amazon.com/images/I/71PNGYHykrL._SL1500_.jpg', 'A review of It Starts With Us.'),
-        reviews('John Doe', 'A very well-written book with deep insights.', 'https://via.placeholder.com/150', 'Placeholder image.')
+        reviews('Kylie Jenner', 'A very well-written book with deep insights.', 'https://m.media-amazon.com/images/I/81noQg1m14L._AC_UL480_FMwebp_QL65_.jpg', 'A review of Sandwich.'),
+        reviews('Nidhi Upadhyay', 'A beautiful and inspiring story that will leave you in awe.', 'https://m.media-amazon.com/images/I/71E8VNPC1dL._AC_UL480_FMwebp_QL65_.jpg', 'A review of Ugly Love.'),
+        reviews('Ana Huang', 'A captivating and thought-provoking read.', 'https://m.media-amazon.com/images/I/71zMzygiDQL._AC_UL480_FMwebp_QL65_.jpg', 'A review of Beautiful Country.')
     ];
 
     res.json(createReviews);
