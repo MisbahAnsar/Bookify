@@ -4,7 +4,7 @@ const app = express();
 
 // Use CORS middleware
 app.use(cors({
-    origin: 'http://localhost:5173'  // Allow requests from your development domain
+    origin: 'https://bookify69.vercel.app'  // Allow requests from your development domain
 }));
 
 app.use(express.json());
