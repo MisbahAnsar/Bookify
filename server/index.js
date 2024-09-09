@@ -21,7 +21,7 @@ app.get('/api/bookopt', (req, res) => {
 });
 
 // Define the /api/bookchoices route
-app.get('/api/bookchoices', (req, res) => {
+app.post('/api/bookchoices', (req, res) => {
     const books = (id, image, name, author, price) => ({id, image, name, author, price});
     const createBook = [
         books(1, 'https://m.media-amazon.com/images/I/910lg-mg-sL._AC_UL480_FMwebp_QL65_.jpg', 'Trust', 'Hernan Diaz', '$15.8'),
