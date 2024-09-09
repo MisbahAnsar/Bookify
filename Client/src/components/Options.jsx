@@ -7,7 +7,7 @@ const Options = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await axios.get('http://bookify69.vercel.app/api/bookopt'); // Ensure correct protocol
+        const response = await axios.get('https://bookify69.vercel.app/api/bookopt'); // Ensure correct protocol
         setBooks(response.data); // Assuming response.data is an array of books
       } catch (error) {
         console.error('Error fetching book data:', error);
