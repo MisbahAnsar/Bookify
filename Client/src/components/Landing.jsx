@@ -36,7 +36,7 @@ export default function Landing() {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
         <div className="backdrop-blur-md bg-transparent">
           <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" className="text-white text-xl font-bold">BookFinder</a>
+            <a href="#" className="text-white text-xl font-bold">BOOKIFY</a>
             <div className="space-x-4">
               <a href="#" className="text-white hover:text-purple-400 transition-colors">Home</a>
               <a href="#" className="text-white hover:text-purple-400 transition-colors">Categories</a>
