@@ -1,38 +1,68 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+"use client"
 
-const Landing = () => {
-  const [books, setBooks] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
+import React, { useState, useEffect } from 'react';
+
+export default function Landing() {
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const controlNavbar = () => {
+      if (typeof window !== 'undefined') {
+        if (window.scrollY > lastScrollY) { // if scroll down hide the navbar
+          setIsVisible(false);
+        } else { // if scroll up show the navbar
+          setIsVisible(true);
+        }
+
+        // remember current page location to use in the next move
+        setLastScrollY(window.scrollY);
+      }
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', controlNavbar);
+
+      // cleanup function
+      return () => {
+        window.removeEventListener('scroll', controlNavbar);
+      };
+    }
+  }, [lastScrollY]);
+
   return (
-    <main>
-      <section className="relative w-full bg-gradient-to-br from-indigo-900 to-pink-500 py-48 md:py-48 lg:py-48 h-screen">
-        <div className="flex flex-col items-center text-center gap-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-bold tracking-tighter text-white sm:text-5xl lg:text-6xl">
+    <main className="min-h-screen bg-gradient-to-br from-slate-900 to-purple-900 relative overflow-hidden">
+      {/* Navbar */}
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="backdrop-blur-md bg-transparent">
+          <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" className="text-white text-xl font-bold">BookFinder</a>
+            <div className="space-x-4">
+              <a href="#" className="text-white hover:text-purple-400 transition-colors">Home</a>
+              <a href="#" className="text-white hover:text-purple-400 transition-colors">Categories</a>
+              <a href="#" className="text-white hover:text-purple-400 transition-colors">About</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-purple-400 opacity-20 blur-3xl"></div>
+      <div className="absolute -top-64 -left-64 h-[700px] w-[700px] rounded-full bg-blue-400 opacity-20 blur-3xl"></div>
+      
+      <div className="absolute inset-0 bg-grid-slate-700/[0.04] bg-[size:40px_40px] [mask-image:linear-gradient(to_bottom,white,transparent)] -z-10"></div>
+      
+      <section className="container mx-auto px-4 py-16 md:py-24 lg:py-32 relative z-10 flex items-center justify-center min-h-screen">
+        <div className="text-center max-w-3xl">
+          <h1 className="text-4xl font-bold tracking-tighter text-white sm:text-5xl lg:text-6xl mb-6">
             Discover Your Next Great Read
           </h1>
-          <p className="max-w-xl text-center text-lg text-white/90 md:text-xl">
+          <p className="text-lg text-slate-300 md:text-xl mb-8">
             Explore our curated collection of books across a wide range of genres and find your perfect literary
             companion.
           </p>
-          <div className="flex gap-2">
-            <input
-              type="search"
-              placeholder="Search books..."
-              className="max-w-md flex-1 rounded-md bg-white/20 px-4 py-2 text-white placeholder:text-white/70 focus:outline-none focus:ring-2 focus:ring-white"
-              defaultValue={searchQuery}
-            />
-            <button className="rounded-md bg-white px-4 py-2 text-sm font-medium text-purple-600 shadow transition-colors hover:bg-white/90 focus:outline-none focus:ring-1 focus:ring-white disabled:pointer-events-none disabled:opacity-50">
-              Search
-            </button>
-          </div>
-        </div>
-        <div className="absolute inset-0 -z-10 opacity-30 mix-blend-overlay">
-          <img src="/placeholder.svg" alt="Hero Background" className="h-full w-full object-cover" />
+          
         </div>
       </section>
     </main>
-  );
-};
-
-export default Landing;
+  )
+}

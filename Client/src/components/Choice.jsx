@@ -9,7 +9,8 @@ const Choice = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await axios.get('https://bookify269.vercel.app/api/bookchoices');
+        // const response = await axios.get('https://bookify269.vercel.app/api/bookchoices');
+        const response = await axios.get('http://localhost:5000/api/bookchoices');
         setBooks(response.data); // Assuming setBooks is your state setter for books
       } catch (error) {
         console.error('Error fetching book data:', error);
