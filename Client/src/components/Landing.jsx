@@ -1,39 +1,12 @@
 "use client"
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 export default function Landing() {
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-
-  useEffect(() => {
-    const controlNavbar = () => {
-      if (typeof window !== 'undefined') {
-        if (window.scrollY > lastScrollY) { // if scroll down hide the navbar
-          setIsVisible(false);
-        } else { // if scroll up show the navbar
-          setIsVisible(true);
-        }
-
-        // remember current page location to use in the next move
-        setLastScrollY(window.scrollY);
-      }
-    };
-
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', controlNavbar);
-
-      // cleanup function
-      return () => {
-        window.removeEventListener('scroll', controlNavbar);
-      };
-    }
-  }, [lastScrollY]);
-
   return (
     <main className="min-h-screen bg-gradient-to-br from-slate-900 to-purple-900 relative overflow-hidden">
       {/* Navbar */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300`}>
         <div className="backdrop-blur-md bg-transparent">
           <div className="container mx-auto px-4 py-4 flex justify-between items-center">
             <a href="#" className="text-white text-xl font-bold">BOOKIFY</a>
