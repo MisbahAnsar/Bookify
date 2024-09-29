@@ -18,7 +18,6 @@ app.get('/api/bookopt', (req, res) => {
     res.json(createBook);
 });
 
-// Define the /api/bookchoices route
 app.get('/api/bookchoices', (req, res) => {
     const books = (id, image, name, author, price) => ({id, image, name, author, price});
     const createBook = [
@@ -30,7 +29,6 @@ app.get('/api/bookchoices', (req, res) => {
     res.json(createBook);
 });
 
-// Define the /api/reviews route
 app.get('/api/reviews', (req, res) => {
     const reviews = (name, review, image, imageDescription) => ({ name, review, image, imageDescription });
     const createReviews = [
