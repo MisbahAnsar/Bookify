@@ -2,10 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-// Use CORS middleware
-app.use(cors({ origin: 'https://bookify-peach.vercel.app' }));
 
 app.use(express.json());
+app.use(cors({ origin: 'https://bookify-peach.vercel.app' }));
+
 
 app.get('/api/bookopt', (req, res) => {
     const books = (id, image, name, author, price) => ({id, image, name, author, price});
