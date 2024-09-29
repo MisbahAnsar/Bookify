@@ -5,10 +5,9 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({
-    origin:"https://bookify-peach.vercel.app",
-    credentials:true
-}
-));
+    origin: "https://bookify-peach.vercel.app", // Allow your frontend origin
+    credentials: true, // Allow cookies/auth if needed
+}));
 
 
 app.get('/api/bookopt', (req, res) => {
