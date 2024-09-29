@@ -3,7 +3,7 @@ const cors = require('cors');
 const app = express();
 
 // Use CORS middleware
-app.use(cors());
+app.use(cors({ origin: 'https://bookify-peach.vercel.app' }));
 
 app.use(express.json());
 

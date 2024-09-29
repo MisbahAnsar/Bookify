@@ -3,14 +3,13 @@ import axios from 'axios';
 
 const Review = () => {
   const [reviews, setReviews] = useState([]);
-  const [selectedReview, setSelectedReview] = useState(0); // Set the first review as open by default
+  const [selectedReview, setSelectedReview] = useState(0);
 
   useEffect(() => {
     const fetchBooks = async () => {
       try {
         const response = await axios.get('https://bookify269.vercel.app/api/reviews');
-        // const response = await axios.get('http://localhost:5000/api/reviews');
-        setReviews(response.data); // Assuming setBooks is your state setter for books
+        setReviews(response.data);
       } catch (error) {
         console.error('Error fetching book data:', error);
       }
