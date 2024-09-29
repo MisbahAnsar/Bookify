@@ -4,7 +4,11 @@ const app = express();
 
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin:"https://bookify269.vercel.app",
+    credentials:true
+}
+));
 
 
 app.get('/api/bookopt', (req, res) => {
